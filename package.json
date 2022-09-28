@@ -1,6 +1,6 @@
 {
   "name": "team-member-allocation",
-  "homepage": "https://wdbsa.github.io",
+  "homepage": "https://wdbsa.github.io/team-allocation",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -15,7 +15,7 @@ const Employees = () => {
         { id: 8, fullName: "Zora Ideale", designation: "Black Bull", gender: "male", teamName: "TeamB" },
         { id: 9, fullName: "Gauche Adlai", designation: "Black Bull", gender: "male", teamName: "TeamB" },
         { id: 10, fullName: "Gordon Agrippa", designation: "Black Bull", gender: "male", teamName: "TeamA" },
-        { id: 11, fullName: "Klaus Lunettes", designation: "Golder Dawn", gender: "male", teamName: "TeamC" },
+        { id: 11, fullName: "Klaus Lunettes", designation: "Golden Dawn", gender: "male", teamName: "TeamC" },
         { id: 12, fullName: "Vanessa Enoteca", designation: "Black Bull", gender: "female", teamName: "TeamC" },
         { id: 13, fullName: "Luck Voltia", designation: "Black Bull", gender: "male", teamName: "TeamC" },
         { id: 14, fullName: "En Ringard", designation: "Green Mantis", gender: "male", teamName: "TeamA" }
