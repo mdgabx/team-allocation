@@ -1,8 +1,14 @@
 const Footer = () => {
+    let currDate = new Date();
+
     return (
-        <main>
-            <h2>Footer</h2>
-        </main>
+        <footer className="container">
+              <div className="row justify-content-center mt-3 mb-4">
+                <div className="col-8">
+                    <h5>Team Allocation - {currDate.getFullYear()} </h5>
+                </div>
+            </div>
+        </footer>
     )
 }
 
