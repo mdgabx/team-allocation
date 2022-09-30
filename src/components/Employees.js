@@ -23,12 +23,25 @@ const Employees = () => {
 
 
     const [employees, setEmployees] = useState(employeesData);
+    const [selectedTeam, setTeam] = useState("TeamB");
+
+    const handleTeamSelection = (event) =>{
+        setTeam(event.target.value);
+    };
+
+    const handleEmployeeCardClick = (event) => {
+        const transformedEmployees = employees.map((employee) => employee.id === parseInt(event.currentTarget.id)
+            ?(employee.TeamName === selectedTeam) ? {...employee, teamName:''} : { ...employee, teamName: selectedTeam }
+            : employee);
+        
+            setEmployees(transformedEmployees);
+    };
 
     return (
         <main className="container">
             <div className="row justify-content-center mt-3 mb-3">
                 <div className="col-6">
-                    <select>
+                    <select className="form-select form-select-lg" value={selectedTeam} onChange={handleTeamSelection}>
                         <option value="TeamA">Team A</option>
                         <option value="TeamB">Team B</option>
                         <option value="TeamC">Team C</option>
@@ -41,7 +54,7 @@ const Employees = () => {
                     {
                     employees.map((employee) => {
                     return (
-                        <div id={employee.id} className="card m-2">
+                        <div key={employee.id} id={employee.id} className={ employee.teamName === selectedTeam ? 'card m-2 standout' : 'card m-2'  } onClick= {handleEmployeeCardClick}>
                           { employee.gender === "male"  && <img src={maleProfile} alt="male profile"  className="card-img-top" />  } 
                           { employee.gender === "female"  && <img src={femaleProfile} alt="female profile" className="card-img-top" />  }    
                             <div className="card-body">
