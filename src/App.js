@@ -56,7 +56,7 @@ const handleEmployeeCardClick = (event) => {
       <Header selectedTeam={selectedTeam} teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length} />
         <Routes>
             <Route path="/" element={<Employees employees={employees} selectedTeam={selectedTeam} handleEmployeeCardClick={handleEmployeeCardClick} handleTeamSelection={handleTeamSelection} />}></Route>
-            <Route path="/group" element={<Group />}></Route>
+            <Route path="/group" element={<Group employees={employees} selectedTeam={selectedTeam} setTeam={setTeam}/>}></Route>
             <Route path="*" element={<NotFound />}></Route>
         </Routes>
         <Footer />
