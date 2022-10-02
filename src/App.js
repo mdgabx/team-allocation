@@ -2,7 +2,11 @@ import * as React from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Employees from './components/Employees';
+import Group from './components/Group';
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import NotFound from './components/NotFound';
 
 function App() {
   const employeesData = [
@@ -23,7 +27,7 @@ function App() {
 ];
 
 
-const [employees, setEmployees] = useState(employeesData);
+const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('employeeList')) || employeesData);
 const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('selectedTeam')) || 'TeamB');
 
 const handleTeamSelection = (event) =>{
@@ -40,15 +44,23 @@ const handleEmployeeCardClick = (event) => {
 
 
   useEffect(() => {
-    localStorage.setItem('jsonlist', JSON.stringify(employees));
-    localStorage.setItem('team selected', JSON.stringify(selectedTeam));
+    localStorage.setItem('employeeList', JSON.stringify(employees));
+    localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam));
   }, [employees, selectedTeam]);
 
   return (
     <div className="App">
+
+      <Router>
+      <Navbar />
       <Header selectedTeam={selectedTeam} teamMemberCount={employees.filter((employee) => employee.teamName === selectedTeam).length} />
-      <Employees employees={employees} selectedTeam={selectedTeam} handleEmployeeCardClick={handleEmployeeCardClick} handleTeamSelection={handleTeamSelection} />
-      <Footer />
+        <Routes>
+            <Route path="/" element={<Employees employees={employees} selectedTeam={selectedTeam} handleEmployeeCardClick={handleEmployeeCardClick} handleTeamSelection={handleTeamSelection} />}></Route>
+            <Route path="/group" element={<Group />}></Route>
+            <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
